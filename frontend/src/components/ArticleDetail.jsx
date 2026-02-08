@@ -57,11 +57,7 @@ const ArticleDetail = () => {
                     </div>
                 </header>
 
-                <div className="content">
-                    {article.content.split('\n').map((paragraph, idx) => (
-                        paragraph ? <p key={idx}>{paragraph}</p> : <br key={idx} />
-                    ))}
-                </div>
+                <div className="content" dangerouslySetInnerHTML={{ __html: article.content }}></div>
 
                 <footer className="article-footer">
                     <button onClick={handleCopyLink} className={copied ? 'copied' : ''}>
@@ -116,6 +112,14 @@ const ArticleDetail = () => {
 
                 .content p {
                     margin-bottom: var(--space-md);
+                }
+
+                .content img {
+                    max-width: 100%;
+                    height: auto;
+                    display: block;
+                    margin: var(--space-md) auto;
+                    border-radius: 4px;
                 }
 
                 .article-footer {

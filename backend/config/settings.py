@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'django_summernote',
     'nobodyspaper',
 ]
 
@@ -54,6 +55,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+# Summernote config
+X_FRAME_OPTIONS = 'SAMEORIGIN'  # Required for Summernote iframe
+SUMMERNOTE_THEME = 'bs4'  # Bootstrap 4 theme
 
 ROOT_URLCONF = 'config.urls'
 
@@ -121,3 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Media files (for user uploaded content like images in Summernote)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

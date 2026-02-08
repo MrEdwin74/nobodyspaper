@@ -42,7 +42,9 @@ const ArticleList = () => {
                         <Link to={`/${article.slug}`}>
                             <h2>{article.title}</h2>
                         </Link>
-                        <p className="excerpt">{article.excerpt || article.content.substring(0, 150) + '...'}</p>
+                        <p className="excerpt">
+                            {article.excerpt || article.content.replace(/<[^>]+>/g, '').substring(0, 150) + '...'}
+                        </p>
                     </article>
                 ))}
             </div>
