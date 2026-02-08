@@ -146,25 +146,30 @@ const ArticleList = () => {
                     color: var(--text-main);
                 }
 
-                /* Hero */
+                /* Hero Section */
                 .hero {
-                    padding: 6rem 0;
-                    text-align: center; /* Center align like reference? Or Left? Let's go Left for text, but center structure */
+                    padding: 6rem 0 2rem 0; /* Keeping the short frame */
+                    text-align: center;
                     border-bottom: 1px solid var(--border-color);
+                    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('/hero-bg.png');
+                    background-size: contain; /* Fit the whole image vertically */
+                    background-repeat: no-repeat;
+                    background-position: center; /* Center it */
+                    background-color: #080808;
                 }
                 .hero h1 {
                     font-size: 4rem;
                     line-height: 1.1;
                     font-weight: 800;
                     margin-bottom: 2rem;
-                    background: linear-gradient(180deg, #fff 0%, #888 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
+                    color: #fff;
+                    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
                 }
                 .hero-sub {
                     color: var(--text-muted);
                     font-size: 0.9rem;
                     letter-spacing: 0.05em;
+                    margin-bottom: 0; /* Remove margin so frame ends here */
                 }
 
                 /* Filter */

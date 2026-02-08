@@ -10,3 +10,8 @@ class ArticleAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('copy_count',)
     summernote_fields = ('content',)
+
+@admin.register(InfoPage)
+class InfoPageAdmin(SummernoteModelAdmin):
+    summernote_fields = ('content',)
+    list_display = ('title', 'slug', 'updated_at')

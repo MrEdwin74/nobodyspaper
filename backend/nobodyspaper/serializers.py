@@ -6,7 +6,11 @@ class InfoPageSerializer(serializers.ModelSerializer):
     class Meta:
         model = InfoPage
         fields = ['title', 'slug', 'content', 'updated_at']
-from .models import Article
+
+class InfoPageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InfoPage
+        fields = ['title', 'slug', 'content', 'updated_at']
 
 class ArticleSerializer(serializers.ModelSerializer):
     first_image = serializers.SerializerMethodField()

@@ -1,6 +1,30 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const About = () => {
+    const [page, setPage] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const apiHost = window.location.hostname;
+        fetch(`http://${apiHost}:8000/api/infopages/about/`)
+            .then(res => {
+                if (!res.ok) throw new Error('Not found');
+                return res.json();
+            })
+            .then(data => {
+                setPage(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Error fetching about page:', err);
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) return <div className="app-container" style={{ paddingTop: '4rem' }}>loading_assets...</div>;
+    if (!page) return <div className="app-container" style={{ paddingTop: '4rem' }}>Page not found</div>;
+
     return (
         <div className="app-container">
             {/* Navbar / Top Bar */}
@@ -16,41 +40,9 @@ const About = () => {
             </nav>
 
             <main className="about-content">
-                <h1>About</h1>
+                <h1>{page.title}</h1>
 
-                <p style={{ fontSize: '1.4rem', fontStyle: 'italic', marginBottom: '3rem' }}>
-                    Nobody’s Paper er et stille rom for tanker som ikke roper.
-                </p>
-
-                <p>
-                    Dette er ikke en nyhetsside.<br />
-                    Ikke et manifest.<br />
-                    Ikke et forsøk på å overbevise.
-                </p>
-                <p>
-                    Det er et arkiv av notater, korte tekster og fragmenter – skrevet for å forstå, ikke for å vinne. Noen ganger er det refleksjoner, andre ganger spørsmål. Ofte er det bare forsøk på å sette ord på noe som ellers ville blitt liggende uformulert.
-                </p>
-                <p>
-                    Navnet kommer av et enkelt ønske:<br />
-                    Å skrive uten å måtte være noen.<br />
-                    Uten posisjon, uten rolle, uten forventning.
-                </p>
-                <p>
-                    Tekstene her er ikke ment å være ferdige svar. De er spor av tanker i bevegelse. Hvis noe treffer, er det fint. Hvis ikke, er det også greit.
-                </p>
-
-                <hr style={{ margin: '3rem 0', borderColor: 'var(--border-color)', opacity: 0.3 }} />
-
-                <p>
-                    Dette er et sted for langsom lesing.<br />
-                    For det uperfekte.<br />
-                    For det som ikke alltid passer inn.
-                </p>
-
-                <p style={{ marginTop: '3rem', opacity: 0.6 }}>
-                    —<br />
-                    Nobody
-                </p>
+                <div className="content" dangerouslySetInnerHTML={{ __html: page.content }}></div>
             </main>
 
             <style>{`
@@ -67,6 +59,14 @@ const About = () => {
                     max-width: 1400px;
                     margin: 0 auto;
                     padding: 0 2rem;
+                    /* Full page background settings */
+                    min-height: 100vh;
+                    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('/hero-bg.png');
+                    background-size: contain; /* Show the whole image */
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-attachment: fixed;
+                    background-color: #000; /* Fill empty space with black */
                 }
 
                 /* Nav - Copy of ArticleList styles for consistency */
@@ -127,11 +127,20 @@ const About = () => {
                     margin-bottom: 1rem;
                 }
 
-                .about-content p {
+                .content {
                     font-size: 1.1rem;
                     line-height: 1.8;
                     color: #ddd;
+                }
+                
+                .content p {
                     margin-bottom: 1.5rem;
+                }
+                
+                .content hr {
+                    margin: 3rem 0;
+                    border-color: var(--border-color);
+                    opacity: 0.3;
                 }
 
             `}</style>

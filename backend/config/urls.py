@@ -20,10 +20,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.views.generic import RedirectView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('nobodyspaper.urls')),
     path('summernote/', include('django_summernote.urls')),
+    path('', RedirectView.as_view(url='http://localhost:5173/')),
 ]
 
 if settings.DEBUG:
