@@ -1,0 +1,16 @@
+/* CSS for å fikse Summernote bredde i Django Admin */
+.note-editor.note-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Sørg for at containeren i admin også tillater full bredde */
+.field-content {
+    width: 100%;
+}
+
+/* Fix for editing area width */
+.note-editing-area {
+    width: 100% !important;
+}

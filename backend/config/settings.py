@@ -58,7 +58,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # Summernote config
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # Required for Summernote iframe
-SUMMERNOTE_THEME = 'bs4'  # Bootstrap 4 theme
+SUMMERNOTE_THEME = 'bs4'
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'disableResizeEditor': False,
+    }
+}
 
 ROOT_URLCONF = 'config.urls'
 
