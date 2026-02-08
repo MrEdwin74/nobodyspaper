@@ -42,13 +42,19 @@ const ArticleDetail = () => {
 
     return (
         <div className="container article-reader">
-            <header style={{ marginBottom: 'var(--space-md)', marginTop: 'var(--space-md)' }}>
-                <nav>
-                    <Link to="/">← Tilbake til arkivet</Link>
-                </nav>
-            </header>
+            {/* Navbar / Top Bar */}
+            <nav className="top-nav">
+                <Link to="/" className="logo">NOBODYSPAPER</Link>
+                <div className="nav-links">
+                    <Link to="/">Archive</Link>
+                    <Link to="/about">About</Link>
+                </div>
+                <div className="admin-link">
+                    <a href={`http://${window.location.hostname}:8000/admin/`} target="_blank" rel="noopener noreferrer">Sign in</a>
+                </div>
+            </nav>
 
-            <article>
+            <article style={{ marginTop: '4rem' }}>
                 <header className="article-header">
                     <span className="category">{article.category}</span>
                     <h1 className="title">{article.title}</h1>
@@ -73,8 +79,55 @@ const ArticleDetail = () => {
             </article>
 
             <style>{`
-                .article-reader {
-                    max-width: 800px; /* Smalere kolonne for lesing */
+                .container {
+                    max-width: 1400px;
+                    margin: 0 auto;
+                    padding: 0 2rem;
+                }
+                
+                .article-reader article {
+                    max-width: 800px; /* Smalere kolonne for selve artikkelinnholdet */
+                    margin: 0 auto;
+                }
+
+                /* Nav Styles (copied from ArticleList) */
+                .top-nav {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 2rem 0;
+                    border-bottom: 1px solid var(--color-border);
+                }
+                .logo {
+                    font-weight: 900;
+                    font-size: 1.2rem;
+                    letter-spacing: 0.1em;
+                    text-decoration: none;
+                    color: var(--color-text-main);
+                }
+                .nav-links a, .nav-links span {
+                    margin: 0 1rem;
+                    color: var(--color-text-muted);
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-size: 0.8rem;
+                    letter-spacing: 0.05em;
+                }
+                .nav-links a:hover {
+                    color: var(--color-text-main);
+                }
+                .admin-link a {
+                    font-size: 0.8rem;
+                    color: var(--color-text-muted);
+                    border: 1px solid var(--color-border);
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    transition: all 0.2s;
+                    text-decoration: none;
+                }
+                .admin-link a:hover {
+                    border-color: var(--color-text-main);
+                    color: var(--color-text-main);
                 }
 
                 .article-header {

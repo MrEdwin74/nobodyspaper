@@ -29,7 +29,7 @@ const About = () => {
         <div className="app-container">
             {/* Navbar / Top Bar */}
             <nav className="top-nav">
-                <div className="logo">NOBODYSPAPER</div>
+                <Link to="/" className="logo">NOBODYSPAPER</Link>
                 <div className="nav-links">
                     <Link to="/">Archive</Link>
                     <span className="active">About</span>
@@ -81,6 +81,8 @@ const About = () => {
                     font-weight: 900;
                     font-size: 1.2rem;
                     letter-spacing: 0.1em;
+                    text-decoration: none;
+                    color: var(--text-main);
                 }
                 .nav-links a, .nav-links span {
                     margin: 0 1rem;
