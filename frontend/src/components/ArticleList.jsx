@@ -30,7 +30,7 @@ const ArticleList = () => {
                     <span style={{ color: 'var(--color-text-muted)' }}>Om</span>
                 </nav>
             </header>
-            
+
             <div className="masonry-grid">
                 {articles.map(article => (
                     <article key={article.id} className="card">
@@ -45,6 +45,10 @@ const ArticleList = () => {
                     </article>
                 ))}
             </div>
+
+            <footer style={{ marginTop: 'var(--space-xl)', textAlign: 'center', opacity: 0.3, fontSize: '0.8rem', paddingBottom: 'var(--space-md)' }}>
+                <a href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener noreferrer">Admin Login</a>
+            </footer>
 
             <style>{`
                 .masonry-grid {

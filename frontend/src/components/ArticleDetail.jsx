@@ -68,6 +68,10 @@ const ArticleDetail = () => {
                     {/* Valgfritt: Vis teller for admin/debugging */}
                     {/* <span>{article.copy_count} kopieringer</span> */}
                 </footer>
+
+                <div style={{ textAlign: 'center', opacity: 0.3, fontSize: '0.8rem', marginBottom: 'var(--space-md)' }}>
+                    <a href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener noreferrer">Admin</a>
+                </div>
             </article>
 
             <style>{`
