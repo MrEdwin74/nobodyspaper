@@ -7,7 +7,8 @@ const ArticleList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/articles/')
+        const apiHost = window.location.hostname;
+        fetch(`http://${apiHost}:8000/api/articles/`)
             .then(res => res.json())
             .then(data => {
                 setArticles(data);
@@ -47,7 +48,7 @@ const ArticleList = () => {
             </div>
 
             <footer style={{ marginTop: 'var(--space-xl)', textAlign: 'center', opacity: 0.3, fontSize: '0.8rem', paddingBottom: 'var(--space-md)' }}>
-                <a href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener noreferrer">Admin Login</a>
+                <a href={`http://${window.location.hostname}:8000/admin/`} target="_blank" rel="noopener noreferrer">Admin Login</a>
             </footer>
 
             <style>{`

@@ -15,7 +15,7 @@ echo "Starter Nobodyspaper utviklingsmiljø..."
 # Start Backend
 echo "Starter Django backend..."
 source .venv/bin/activate
-python backend/manage.py runserver &
+python backend/manage.py runserver 0.0.0.0:8000 &
 BACKEND_PID=$!
 
 # Vent litt for å la backend starte

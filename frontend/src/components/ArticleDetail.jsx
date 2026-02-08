@@ -9,7 +9,8 @@ const ArticleDetail = () => {
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/articles/${slug}/`)
+        const apiHost = window.location.hostname;
+        fetch(`http://${apiHost}:8000/api/articles/${slug}/`)
             .then(res => res.json())
             .then(data => {
                 setArticle(data);
@@ -29,7 +30,8 @@ const ArticleDetail = () => {
             setTimeout(() => setCopied(false), 2000);
 
             // Kall backend for å øke teller
-            fetch(`http://127.0.0.1:8000/api/articles/${slug}/copy/`, {
+            const apiHost = window.location.hostname;
+            fetch(`http://${apiHost}:8000/api/articles/${slug}/copy/`, {
                 method: 'POST',
             }).catch(console.error);
         });
@@ -70,7 +72,7 @@ const ArticleDetail = () => {
                 </footer>
 
                 <div style={{ textAlign: 'center', opacity: 0.3, fontSize: '0.8rem', marginBottom: 'var(--space-md)' }}>
-                    <a href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener noreferrer">Admin</a>
+                    <a href={`http://${window.location.hostname}:8000/admin/`} target="_blank" rel="noopener noreferrer">Admin</a>
                 </div>
             </article>
 
